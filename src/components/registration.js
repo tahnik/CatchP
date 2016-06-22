@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 
 
-class Authentication extends Component {
+class Registration extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -29,7 +29,7 @@ class Authentication extends Component {
                     onChangeText={(password) => this.setState({password})}
                     value={this.state.password}
                 />
-                <TouchableOpacity onPress={ () => this.props.navigator.push({ index: this.props.index + 1 }) } style={styles.signin}>
+                <TouchableOpacity onPress={ () => console.log('stuff') } style={styles.signin}>
                     <Text style={{ color: 'white' }}>
                         Sign in
                     </Text>
@@ -60,4 +60,4 @@ var styles = StyleSheet.create({
     }
 })
 
-export default Authentication;
+export default Registration;
