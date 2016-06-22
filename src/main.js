@@ -4,12 +4,9 @@ import { AppRegistry, Text, View, Navigator, StyleSheet } from 'react-native';
 import Authentication from './components/authentication';
 import Home_user from './components/home_user';
 
-import Registration from './components/registration';
-
-var AUTH_ROUTE_STACK = [
-    {name: 'signin', component: Authentication, index: 0},
-    {name: 'registration', component: Registration, index: 1}
-];
+var AUTH_ROUTE_STACK = {
+    signin: Authentication
+}
 
 class main extends Component {
     constructor(props) {
@@ -18,15 +15,9 @@ class main extends Component {
             loggedIn: false
         }
     }
-    changeState(val){
-        this.setState({
-            loggedIn: val
-        })
-    }
     renderAuthRegScene(route, navigator){
-        var CurrentComponent = AUTH_ROUTE_STACK[route.index].component;
-        var index = AUTH_ROUTE_STACK[route.index].index;
-        return <CurrentComponent title={route.name} navigator={navigator} index={index} />
+        var CurrentComponent = AUTH_ROUTE_STACK[route.name];
+        return <CurrentComponent title={route.name} navigator={navigator} />
     }
     changeAuth(bol, route, navigator){
         if(bol){
@@ -41,10 +32,9 @@ class main extends Component {
         return (
             <Navigator
                 style={styles.container}
-                initialRoute={ AUTH_ROUTE_STACK[0] }
-                initialRouteStack = { AUTH_ROUTE_STACK }
+                initialRoute={{ name: 'signin' }}
                 renderScene={ (route, navigator) => this.renderAuthRegScene(route, navigator) }
-                configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight } }
+                configureScene={ () => { return Navigator.SceneConfigs.HorizontalSwipeJump } }
             />
         )
     }

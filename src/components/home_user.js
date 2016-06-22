@@ -5,12 +5,7 @@ class Home_user extends Component {
     render() {
         return (
             <View style={styles.home_user}>
-                {/*<Navigator
-                    style={styles.container}
-                    initialRoute={}
-                    renderScene={}
-                    configureScene={() => { return Navigator.SceneConfigs.FloatFromRight }}
-                />*/}
+                
             />
             </View>
         )
